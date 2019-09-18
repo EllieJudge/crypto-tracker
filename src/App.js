@@ -1,26 +1,51 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Axios from 'axios';
+import SimpleTable from './components/Table';
+import NavBar from './components/NavBar';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//Pages
+import About from './components/pages/About';
+import CoinInfo from './components/pages/CoinInfo';
+import Favourites from './components/pages/Favourites';
+
+//Why dis no work? Ask Will
+//import { About, CoinInfo, Favourites } from './components/pages/'
+
+class App extends React.Component {
+    state = {
+        coins: []
+    }
+
+    componentDidMount(){
+        Axios.get('https://api.coingecko.com/api/v3/coins?order=rank_desc&per_page=100')
+        .then(response => {
+            console.log('success!', response)
+            this.setState({
+                coins: response.data
+            })
+        })
+        .catch(function (err) {
+            console.log('err', err)
+        })
+    }
+    render() {
+        return (
+            <BrowserRouter>
+                <div>
+                    <NavBar />
+
+                    <Route exact path='/' render={() => <SimpleTable data={this.state.coins} />} />
+                    <Route path = '/Home' render = {() =>  <SimpleTable data={this.state.coins} />} />
+					<Route path='/About' component={About} />
+                    <Route path = '/Favourites' component={Favourites} />
+                    <Route path='/CoinInfo' component={CoinInfo} />	
+                    {/* render={(props) => <Dashboard {...props} isAuthed={true}				 */}
+                </div>
+            </BrowserRouter>
+        )
+    }
 }
 
-export default App;
+
+export default App
