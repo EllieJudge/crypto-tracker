@@ -31,7 +31,7 @@ const useStyles = makeStyles({
           onKeyDown={toggleDrawer(side, false)}
         >
           <List>
-            {['Home', 'Favourites', 'About', 'CoinInfo'].map((text, index) => (
+            {['Home', 'Favourites', 'About'].map((text, index) => (
                 <NavLink to={'/' + text} key={text} >
                 <ListItemIcon>{index % 2 === 0 ? <MonetizationOnIcon /> : <Star />}</ListItemIcon>
                 <ListItemText primary={text} />

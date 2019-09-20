@@ -9,13 +9,12 @@ class Navbar extends React.Component {
         return(
             <div>
                 <AppBar position="static">
-                <Toolbar title="Crypto-App">
-                <div marginLeft={'500px'}>
-                        <SwipeableTemporaryDrawer />
-                </div> 
-                        <Typography variant="h6">Crypto-App</Typography>    
-                    </Toolbar>
-                   
+                    <Toolbar title="Crypto-App">
+                        <div marginleft={'500px'}>
+                            <SwipeableTemporaryDrawer />
+                        </div>
+                        <Typography variant="h6">Crypto-App</Typography>  
+                    </Toolbar>       
                 </AppBar>
             </div>
         )

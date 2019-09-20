@@ -23,6 +23,8 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+console.log('STATE:', store.getState()) //log state
+
 //WRAP the provider around app, pass it store
 ReactDOM.render(
     <Provider store={store}>

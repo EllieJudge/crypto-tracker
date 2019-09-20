@@ -1,16 +1,22 @@
+import Axios from 'axios';
 
-//REDUCER - FOR SAVING TO FAVS
+//COINS REDUCER - GETS COINS
 //reducer changes the state 
-
-const getCoinsReducer = (state=coins, action) => {
+const coinsReducer = (state = [], action) => {
     switch(action.type) {
-        case 'FETCH_COINS':
-            
-            return !state;
-             
+        case 'GET_COINS':
+            Axios.get('https://api.coingecko.com/api/v3/coins?order=rank_desc&per_page=100')
+            .then(response => {
+                console.log('success!', response)              
+                return state.push(...response.data) //destructuring! LOOK IT UP
+            })
+            .catch(function (err) {
+                console.log('err', err)
+            })
+            return state;
         default:
             return state;
     }
 }
 
-export default getCoinsReducer;
+export default coinsReducer;

@@ -3,10 +3,12 @@
 
 //IMPORT them all
 import favouriteReducer from './favouriteReducer';
-import orderBitNameReducer from './orderBitNameRed';
+import coinsReducer from './coinsReducer';
+import searchReducer from './searchReducer';
 
 //IMPORT comebineReducer method from redux
 import { combineReducers } from 'redux'
+
 
 
 //THIS IS YOUR STORE!!
@@ -14,7 +16,8 @@ import { combineReducers } from 'redux'
 const allReducers = combineReducers({
     //NAMES OF REDUCERS
     favourite: favouriteReducer,
-    orderBitName: orderBitNameReducer
+    getCoins: coinsReducer,
+    searchReducer: searchReducer
 });
 
 //EXPORT

@@ -1,5 +1,22 @@
 //ACTIONS GO IN HERE
-//literally just say what you wanna do, the type
+//literally just say what ya wanna do, the type (can also pass data)
+
+
+//GET COINS ACTION
+export const getCoins = () => {
+	return {
+		type: 'GET_COINS',
+		// payload: 
+	}
+}
+
+//SEARCH COINS ACTION
+export const searchCoinsAction = (value) => {
+	return {
+		type: 'SET_SEARCH',
+		payload: value
+	}
+}
 
 //FAVOURITES ACTION
 export const addFavourite = (coin) => {
@@ -16,9 +33,3 @@ export const removeFavourite = (coin) => {
 	}
 }
 
-//ORDER BIT NAME ACTION
-export const orderBitName = () => {
-	return {
-		type: 'ORDER_BIT_NAME'
-	}
-}

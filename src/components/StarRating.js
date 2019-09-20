@@ -1,6 +1,5 @@
 import React from 'react';
-import Star from '@material-ui/icons/Star';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
+import {Star, StarBorder} from '@material-ui/icons';
 
 //TO ACCESS A PIECE OF STATE
 import { useSelector } from 'react-redux';
@@ -22,10 +21,9 @@ export default function StarRating (props){
 		})
 		
 		if (favState.some(r => r && (r.id === coin.id))) { // r is row
-		// console.log('row is: ', props.row);
 			return <Star color="primary" onClick={() => dispatch(removeFavourite(coin))} />
 	} else {
-			return <StarBorderIcon color="primary" onClick={() => dispatch(addFavourite(coin))} />;
+			return <StarBorder color="primary" onClick={() => dispatch(addFavourite(coin))} />;
 	}
 }
 

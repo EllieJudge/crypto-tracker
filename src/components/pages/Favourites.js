@@ -1,16 +1,9 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import { Paper, TableRow, TableHead, TableCell, TableBody, Table } from '@material-ui/core';
+import { Star } from '@material-ui/icons';
 import StarRating from '../StarRating'
-import Star from '@material-ui/icons/Star'
-import StarBorderIcon from '@material-ui/icons/StarBorder'
+
 //TO ACCESS A PIECE OF STATE
 import { useSelector } from 'react-redux';
 
@@ -51,15 +44,12 @@ const classes = useStyles();
             <div>
                 <div className={classes.header}>
                    <div className={classes.favTxt}>Your Favourites:</div> 
-                </div>
-                  
-                            
-                {console.log('list of favs:', favState)}      
+                </div>     
                     <Paper className={classes.root}>
                     <Table className={classes.table}>
                         <TableHead>
                         <TableRow>
-                            <TableCell>Bitcoins (Top 100 from Coin Gecko)! <ArrowDownwardIcon fontSize="small" /></TableCell> 
+                            <TableCell>Bitcoins (Top 100 from Coin Gecko)!</TableCell> 
                             <TableCell align="right">Symbol</TableCell>
                             <TableCell align="right">Price in gbp&nbsp;(£)</TableCell>
                             <TableCell align="right">Price in eur&nbsp;(€)</TableCell>

@@ -1,51 +1,57 @@
 import React from 'react';
-import Axios from 'axios';
-import SimpleTable from './components/Table';
-import NavBar from './components/NavBar';
 import { BrowserRouter, Route } from 'react-router-dom';
-
+import NavBar from './components/NavBar';
+import SimpleTable from './components/Table';
+import SearchBar from './components/SearchBar';
 //Pages
 import About from './components/pages/About';
 import CoinInfo from './components/pages/CoinInfo';
 import Favourites from './components/pages/Favourites';
 
-//Why dis no work? Ask Will
-//import { About, CoinInfo, Favourites } from './components/pages/'
+//TO ACCESS A PIECE OF STATE
+import { useSelector } from 'react-redux'; //lets you SELECT bits of state
 
-class App extends React.Component {
-    state = {
-        coins: []
-    }
+//TO IMPORT OUR ACTIONS
+import { getCoins } from './components/actions';
 
-    componentDidMount(){
-        Axios.get('https://api.coingecko.com/api/v3/coins?order=rank_desc&per_page=100')
-        .then(response => {
-            console.log('success!', response)
-            this.setState({
-                coins: response.data
-            })
-        })
-        .catch(function (err) {
-            console.log('err', err)
-        })
-    }
-    render() {
+//TO DEPORT(use) OUR ACTION
+import {useDispatch} from 'react-redux';
+
+//seearchterm
+
+
+function App () {  
+//store bits of state in variable using selector
+const coins = useSelector(state=>state.getCoins);
+//save useDispatch in variable
+const dispatch = useDispatch();
+//dispatch function (instead of an onclick)
+function makeWorkPls () {
+    dispatch(getCoins())
+}
+makeWorkPls()
+
+function handleSearchChange (term) {
+    
+}
+
+// const searchedCoins = useSelector(state=>state.searchCoins);
+        //GETTING COINS DATA PASSED FROM coinsReducer
         return (
             <BrowserRouter>
-                <div>
+                <div>                  
                     <NavBar />
-
-                    <Route exact path='/' render={() => <SimpleTable data={this.state.coins} />} />
-                    <Route path = '/Home' render = {() =>  <SimpleTable data={this.state.coins} />} />
-					<Route path='/About' component={About} />
-                    <Route path = '/Favourites' component={Favourites} />
-                    <Route path='/CoinInfo' component={CoinInfo} />	
-                    {/* render={(props) => <Dashboard {...props} isAuthed={true}				 */}
+                    {/* send data to SearchBar */}
+                    <SearchBar handleSearchChange={handleSearchChange} data={coins}/>
+                        <Route exact path='/' render={() => <SimpleTable data={coins} />} />
+                        <Route path = '/Home' render = {() =>  <SimpleTable data={coins} />} />
+                        <Route path='/About' component={About} />
+                        <Route path = '/Favourites' component={Favourites} />
+                        <Route path='/CoinInfo' component={CoinInfo} />	
                 </div>
             </BrowserRouter>
         )
     }
-}
 
 
-export default App
+export default App;

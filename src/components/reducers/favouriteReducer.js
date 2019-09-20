@@ -1,4 +1,3 @@
-
 //REDUCER - FOR SAVING TO FAVS
 //reducer changes the state !
 //state = empty array
