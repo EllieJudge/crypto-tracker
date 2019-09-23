@@ -22,7 +22,7 @@ export default function StarRating (props){
 		
 		if (favState.some(r => r && (r.id === coin.id))) { // r is row
 			return <Star color="primary" onClick={() => dispatch(removeFavourite(coin))} />
-	} else {
+		} else {
 			return <StarBorder color="primary" onClick={() => dispatch(addFavourite(coin))} />;
 	}
 }

@@ -17,7 +17,7 @@ const allReducers = combineReducers({
     //NAMES OF REDUCERS
     favourite: favouriteReducer,
     getCoins: coinsReducer,
-    searchReducer: searchReducer
+    searchCoins: searchReducer
 });
 
 //EXPORT

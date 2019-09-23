@@ -2,24 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles, Paper, TableRow, TableHead, TableCell, TableBody, Table } from '@material-ui/core';
 import StarRating from './StarRating';
-//IMPORT USESELECTOR THING
+
+//IMPORT USESELECTOR TO ACCESS STATE
 import {useSelector} from 'react-redux'; 
 
-//IMPORT SEARCH ACTION
 
-//TO DEPORT(use) OUR ACTION
-import {useDispatch} from 'react-redux';
-
-
-//call action to get search term 
-dispatch
-
-//if else function 
-//if ('GET_SEARCH' > 1) {
-//   return (
-//   
-//   )
-// }
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,6 +26,17 @@ const useStyles = makeStyles(theme => ({
 
 export default function SimpleTable(props) {
   const classes = useStyles();
+  console.log('props', props.data.name)
+  const searchState = useSelector(state=>state.searchCoins);
+
+  let filteredCoins = props.data.filter((coin) => {
+
+    // console.log(props.data)
+    // console.log(coin.name)
+    // console.log(coin.name.indexOf(searchState))
+    // console.log(coin.name.indexOf(searchState) !== -1)
+    return  coin.name.indexOf(searchState) !== -1 ? null : coin //get search value somehow[]
+  })  
   return (
     <div>
       <h3 className={classes.header}>Top 100 Bitcoins from Coin Gecko!</h3>
@@ -56,8 +54,9 @@ export default function SimpleTable(props) {
             <TableCell align="right">Star&nbsp;(☆)</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {props.data.map(coin => ( //map coin info into cells! woohoo!
+   
+        <TableBody> 
+          {props.data.map(coin => ( // originally props.data
             <TableRow key={coin.id} >
               <TableCell component="th" scope="row">
               <Link to={{ pathname: 'CoinInfo', aboutCoinProps: {

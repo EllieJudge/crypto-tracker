@@ -7,7 +7,7 @@ import { FormControl, Input, InputLabel} from '@material-ui/core';
 
 // //TO IMPORT OUR ACTIONS
 // import { getCoins } from './actions';
-import {searchCoinsAction} from './actions';
+import {setSearch} from './actions';
 
 // //TO DEPORT(use) OUR ACTION
 import {useDispatch} from 'react-redux';
@@ -35,10 +35,11 @@ export default function SearchBar(props) {
   const [name, setName] = React.useState('Search');
   const classes = useStyles();
 
+  //SENDING SEARCH INFO TO SEARCH ACTION
   function handleChange(event) {
     setName(event.target.value); 
     console.log('EVENT TARGET VALUE', event.target.value)
-    dispatch(searchCoinsAction(event.target.value))
+    dispatch(setSearch(event.target.value))
   }
 
   return (

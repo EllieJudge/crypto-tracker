@@ -11,12 +11,20 @@ export const getCoins = () => {
 }
 
 //SEARCH COINS ACTION
-export const searchCoinsAction = (value) => {
+export const setSearch = (searchValue) => {
 	return {
 		type: 'SET_SEARCH',
-		payload: value
+		payload: searchValue
 	}
 }
+
+//GET SEARCH
+// export const getSearch = (coins) => {
+// 	return {
+// 		type: 'GET_SEARCH',
+// 		payload: coins
+// 	}
+// }
 
 //FAVOURITES ACTION
 export const addFavourite = (coin) => {
