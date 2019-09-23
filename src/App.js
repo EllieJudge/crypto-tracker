@@ -18,25 +18,24 @@ import { getCoins } from './components/actions';
 // //TO DEPORT(use) OUR ACTION
 import {useDispatch} from 'react-redux';
 
-
 function App () {  
 
 //store bits of state in variable using selector
 const coins = useSelector(state=>state.getCoins);
-const searchResults = useSelector(state=>state.searchCoins);
+//const searchResults = useSelector(state=>state.searchCoins);
 
-function display () {
-    console.log('display func', coins)
-    console.log('display func', searchResults)
-    const filteredCoins = coins.name.filter((coin) => coin.name.includes(searchResults))
-    //return coins.filter.indexOf(searchResults)
-    console.log('filteredCoins', filteredCoins)
-    return filteredCoins
+// function display () {
+//     console.log('display func', coins)
+//     console.log('display func', searchResults)
+//     filteredCoins = coins.name.filter((coin) => coin.name.includes(searchResults))
+//     //return coins.filter.indexOf(searchResults)
+//     console.log('filteredCoins', filteredCoins)
+//     return filteredCoins
 
-}
-display()
+// }
+// //display()
 
-console.log(filteredCoins)
+
 //console.log(searchResults)
 // const searchTerm = useSelector(state=>state.search); //Combined reducers state
 // console.log('searchTerm',searchTerm)
@@ -61,13 +60,12 @@ function getCoinsFunc () {
 getCoinsFunc()
 
 // const searchedCoins = useSelector(state=>state.searchCoins);
-
         //GETTING COINS DATA PASSED FROM coinsReducer
         return (
             <BrowserRouter>
                 <div>                  
                     <NavBar />
-                    {/* send data to SearchBar  */}
+                    {/* send data to SearchBar */}
                     <SearchBar data={coins}/>
                         <Route exact path='/' render={() => <SimpleTable data={coins}/>} />
                         <Route path = '/Home' render = {() =>  <SimpleTable data={coins}/>} />

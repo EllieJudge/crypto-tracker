@@ -4,9 +4,7 @@ import { makeStyles, Paper, TableRow, TableHead, TableCell, TableBody, Table } f
 import StarRating from './StarRating';
 
 //IMPORT USESELECTOR TO ACCESS STATE
-import {useSelector} from 'react-redux'; 
-
-
+// import {useSelector} from 'react-redux'; 
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,16 +25,16 @@ const useStyles = makeStyles(theme => ({
 export default function SimpleTable(props) {
   const classes = useStyles();
   console.log('props', props.data.name)
-  const searchState = useSelector(state=>state.searchCoins);
+  //const searchState = useSelector(state=>state.searchCoins);
 
-  let filteredCoins = props.data.filter((coin) => {
+  //let filteredCoins = props.data.filter((coin) => {
 
     // console.log(props.data)
     // console.log(coin.name)
     // console.log(coin.name.indexOf(searchState))
     // console.log(coin.name.indexOf(searchState) !== -1)
-    return  coin.name.indexOf(searchState) !== -1 ? null : coin //get search value somehow[]
-  })  
+    //return  coin.name.indexOf(searchState) !== -1 ? null : coin //get search value somehow[]
+  //})  
   return (
     <div>
       <h3 className={classes.header}>Top 100 Bitcoins from Coin Gecko!</h3>
@@ -53,8 +51,7 @@ export default function SimpleTable(props) {
             <TableCell align="right">Market Cap&nbsp;(£)</TableCell>
             <TableCell align="right">Star&nbsp;(☆)</TableCell>
           </TableRow>
-        </TableHead>
-   
+        </TableHead>  
         <TableBody> 
           {props.data.map(coin => ( // originally props.data
             <TableRow key={coin.id} >

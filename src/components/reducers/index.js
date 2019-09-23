@@ -10,7 +10,6 @@ import searchReducer from './searchReducer';
 import { combineReducers } from 'redux'
 
 
-
 //THIS IS YOUR STORE!!
 //function with object
 const allReducers = combineReducers({
